@@ -1,0 +1,14 @@
+services:
+  fpga-docker:
+    container_name: fpga-tools-container
+    build:
+      context: .
+    network_mode: host
+    image: fpga-tools-image
+    privileged: true
+    user: "0:0"
+    volumes:
+      #elegir carpeta compartida
+      - ./shared:/core/shared:rw,z
+    command: tail -f /dev/null
+    working_dir: /core
